@@ -299,21 +299,27 @@
   @media (max-width:700px){ .complementary-box{ flex-direction:column; padding:32px; } }
 
   /* ===== Social proof ===== */
-  .grid-3{ display:grid; grid-template-columns:repeat(3,1fr); gap:24px; }
-  .testimonial-placeholder{
-    background:var(--white); border:1.5px dashed rgba(91,42,92,0.28);
-    border-radius:var(--radius-md); padding:30px 26px;
+  .testimonial-grid{ display:flex; flex-wrap:wrap; justify-content:center; gap:22px; }
+  .testimonial-card{
+    background:var(--white); border:1px solid var(--line);
+    border-radius:var(--radius-md); padding:28px 26px;
+    display:flex; flex-direction:column; gap:14px;
+    flex:1 1 300px; max-width:360px;
   }
-  .testimonial-placeholder svg{ width:26px; height:26px; color:var(--lilac); margin-bottom:16px; }
-  .testimonial-placeholder p{ font-size:14.5px; color:var(--ink-soft); font-style:italic; line-height:1.6; }
-  .testimonial-placeholder .badge{
-    margin-top:18px; display:inline-block; font-size:11.5px; font-weight:700;
-    letter-spacing:0.08em; text-transform:uppercase; color:var(--sage-deep);
-    background:var(--sage-tint); padding:5px 10px; border-radius:6px;
+  .testimonial-stars{ display:flex; gap:3px; }
+  .testimonial-stars svg{ width:15px; height:15px; fill:#E3A72F; }
+  .testimonial-quote{ font-size:14.5px; color:var(--ink-soft); line-height:1.6; flex:1; }
+  .testimonial-author{ display:flex; align-items:center; gap:12px; }
+  .testimonial-avatar{
+    width:38px; height:38px; border-radius:50%; flex:none;
+    display:flex; align-items:center; justify-content:center;
+    color:var(--white); font-family:'Fraunces',serif; font-weight:650; font-size:15.5px;
   }
+  .testimonial-name{ font-size:14px; font-weight:700; color:var(--purple-deep); }
+  .testimonial-source{ display:flex; align-items:center; gap:6px; margin-top:2px; font-size:12px; color:var(--ink-soft); }
+  .testimonial-source svg{ width:13px; height:13px; flex:none; }
   .proof-footer{ margin-top:28px; display:flex; align-items:center; gap:12px; font-size:14.5px; color:var(--ink-soft); }
   .proof-footer a{ font-weight:700; color:var(--purple-deep); text-decoration:underline; text-underline-offset:3px; }
-  @media (max-width:860px){ .grid-3{ grid-template-columns:1fr; } }
 
   /* ===== FAQ ===== */
   .faq-list{ max-width:800px; }
@@ -632,28 +638,94 @@
 </section>
 
 <!-- ============ PROVA SOCIAL ============ -->
-<!-- TODO (Felipe): inserir de 3 a 5 avaliações reais do Perfil da Empresa no Google (nome/iniciais conforme autorização) e o link real do perfil no lugar do href="#" abaixo. Não usar depoimentos fictícios. -->
+<!-- TODO (Felipe): trocar o href="#" abaixo pelo link real do Perfil da Empresa no Google quando disponível. -->
 <section class="section-pad bg-paper">
   <div class="wrap">
+    <svg width="0" height="0" style="position:absolute" aria-hidden="true">
+      <symbol id="ic-star" viewBox="0 0 20 20"><path d="M10 1.3l2.7 5.5 6.1.9-4.4 4.3 1 6.1-5.4-2.9-5.4 2.9 1-6.1-4.4-4.3 6.1-.9z"/></symbol>
+      <symbol id="ic-google" viewBox="0 0 24 24"><path d="M23.04 12.27c0-.79-.07-1.54-.2-2.27H12v4.3h6.19a5.3 5.3 0 0 1-2.3 3.48v2.9h3.72c2.18-2 3.43-4.96 3.43-8.41z" fill="#4285F4"/><path d="M12 24c3.11 0 5.72-1.03 7.62-2.8l-3.72-2.9c-1.03.7-2.36 1.1-3.9 1.1-3 0-5.54-2.02-6.45-4.75H1.72v2.99A12 12 0 0 0 12 24z" fill="#34A853"/><path d="M5.55 14.65a7.2 7.2 0 0 1 0-4.6V7.06H1.72a12 12 0 0 0 0 9.88z" fill="#FBBC05"/><path d="M12 4.75c1.69 0 3.21.58 4.4 1.72l3.3-3.3C17.7 1.19 15.1 0 12 0A12 12 0 0 0 1.72 7.06l3.83 2.99c.9-2.73 3.45-4.75 6.45-4.75z" fill="#EA4335"/></symbol>
+    </svg>
     <div class="section-head">
       <span class="eyebrow">O que as empresas dizem</span>
       <h2>Avaliações de quem já passou pelo processo</h2>
     </div>
-    <div class="grid-3">
-      <div class="testimonial-placeholder">
-        <svg viewBox="0 0 40 40" fill="currentColor" aria-hidden="true"><path d="M6 22c0-8 5-14 12-16l1.5 3.5C14.5 11 12 14 12 18h6v10H6v-6z"/></svg>
-        <p>Avaliação verificada do Google. Em atualização.</p>
-        <span class="badge">Em breve</span>
+    <div class="testimonial-grid">
+      <div class="testimonial-card">
+        <div class="testimonial-stars"><svg><use href="#ic-star"/></svg><svg><use href="#ic-star"/></svg><svg><use href="#ic-star"/></svg><svg><use href="#ic-star"/></svg><svg><use href="#ic-star"/></svg></div>
+        <p class="testimonial-quote">"Ótima profissional!"</p>
+        <div class="testimonial-author">
+          <span class="testimonial-avatar" style="background:#5B2A5C;">L</span>
+          <div>
+            <div class="testimonial-name">Luciana SaaD</div>
+            <div class="testimonial-source"><svg><use href="#ic-google"/></svg>Avaliação no Google</div>
+          </div>
+        </div>
       </div>
-      <div class="testimonial-placeholder">
-        <svg viewBox="0 0 40 40" fill="currentColor" aria-hidden="true"><path d="M6 22c0-8 5-14 12-16l1.5 3.5C14.5 11 12 14 12 18h6v10H6v-6z"/></svg>
-        <p>Avaliação verificada do Google. Em atualização.</p>
-        <span class="badge">Em breve</span>
+      <div class="testimonial-card">
+        <div class="testimonial-stars"><svg><use href="#ic-star"/></svg><svg><use href="#ic-star"/></svg><svg><use href="#ic-star"/></svg><svg><use href="#ic-star"/></svg><svg><use href="#ic-star"/></svg></div>
+        <p class="testimonial-quote">"Profissional atenciosa e competente. Tem a experiência e as relações para prestar um serviço seguro e adequado para atingir o resultado desejado. No meu caso a questão foi uma revisão de volume em outorga de poço junto à SPAguas."</p>
+        <div class="testimonial-author">
+          <span class="testimonial-avatar" style="background:#2C4E3E;">R</span>
+          <div>
+            <div class="testimonial-name">Ricardo Lima</div>
+            <div class="testimonial-source"><svg><use href="#ic-google"/></svg>Avaliação no Google</div>
+          </div>
+        </div>
       </div>
-      <div class="testimonial-placeholder">
-        <svg viewBox="0 0 40 40" fill="currentColor" aria-hidden="true"><path d="M6 22c0-8 5-14 12-16l1.5 3.5C14.5 11 12 14 12 18h6v10H6v-6z"/></svg>
-        <p>Avaliação verificada do Google. Em atualização.</p>
-        <span class="badge">Em breve</span>
+      <div class="testimonial-card">
+        <div class="testimonial-stars"><svg><use href="#ic-star"/></svg><svg><use href="#ic-star"/></svg><svg><use href="#ic-star"/></svg><svg><use href="#ic-star"/></svg><svg><use href="#ic-star"/></svg></div>
+        <p class="testimonial-quote">"Contratamos os serviços de licenças ambientais com a Sra. Pamela, desde o início, a partir da proposta até a finalização dos serviços, tivemos acompanhamento no processo. Recomendo pela seriedade e profissionalismo."</p>
+        <div class="testimonial-author">
+          <span class="testimonial-avatar" style="background:#B8863B;">F</span>
+          <div>
+            <div class="testimonial-name">Fabio Larrubia</div>
+            <div class="testimonial-source"><svg><use href="#ic-google"/></svg>Avaliação no Google</div>
+          </div>
+        </div>
+      </div>
+      <div class="testimonial-card">
+        <div class="testimonial-stars"><svg><use href="#ic-star"/></svg><svg><use href="#ic-star"/></svg><svg><use href="#ic-star"/></svg><svg><use href="#ic-star"/></svg><svg><use href="#ic-star"/></svg></div>
+        <p class="testimonial-quote">"Pamela foi extremamente atenciosa, demonstrou muita competência e objetividade nas informações e orientações que precisávamos. Recomendo muito!!"</p>
+        <div class="testimonial-author">
+          <span class="testimonial-avatar" style="background:#3A1A3C;">D</span>
+          <div>
+            <div class="testimonial-name">Denise Hachul</div>
+            <div class="testimonial-source"><svg><use href="#ic-google"/></svg>Avaliação no Google</div>
+          </div>
+        </div>
+      </div>
+      <div class="testimonial-card">
+        <div class="testimonial-stars"><svg><use href="#ic-star"/></svg><svg><use href="#ic-star"/></svg><svg><use href="#ic-star"/></svg><svg><use href="#ic-star"/></svg><svg><use href="#ic-star"/></svg></div>
+        <p class="testimonial-quote">"Foi uma experiência que superou as minhas expectativas. Seja pela eficiência, mas sobretudo, pelo acolhimento e sobretudo, pelo expertise demonstrado."</p>
+        <div class="testimonial-author">
+          <span class="testimonial-avatar" style="background:#3F6B56;">M</span>
+          <div>
+            <div class="testimonial-name">Marisilda Guerra</div>
+            <div class="testimonial-source"><svg><use href="#ic-google"/></svg>Avaliação no Google</div>
+          </div>
+        </div>
+      </div>
+      <div class="testimonial-card">
+        <div class="testimonial-stars"><svg><use href="#ic-star"/></svg><svg><use href="#ic-star"/></svg><svg><use href="#ic-star"/></svg><svg><use href="#ic-star"/></svg><svg><use href="#ic-star"/></svg></div>
+        <p class="testimonial-quote">"A Pamela sempre foi muito dedicada em tudo o que faz, com certeza uma excelente profissional, super atenciosa e inteligente! Recomendo muito!!!"</p>
+        <div class="testimonial-author">
+          <span class="testimonial-avatar" style="background:#A9645B;">J</span>
+          <div>
+            <div class="testimonial-name">Janaina Buzetto</div>
+            <div class="testimonial-source"><svg><use href="#ic-google"/></svg>Avaliação no Google</div>
+          </div>
+        </div>
+      </div>
+      <div class="testimonial-card">
+        <div class="testimonial-stars"><svg><use href="#ic-star"/></svg><svg><use href="#ic-star"/></svg><svg><use href="#ic-star"/></svg><svg><use href="#ic-star"/></svg><svg><use href="#ic-star"/></svg></div>
+        <p class="testimonial-quote">"Profissional séria e eficiente."</p>
+        <div class="testimonial-author">
+          <span class="testimonial-avatar" style="background:#8B6BA0;">R</span>
+          <div>
+            <div class="testimonial-name">Rafaela Bianco</div>
+            <div class="testimonial-source"><svg><use href="#ic-google"/></svg>Avaliação no Google</div>
+          </div>
+        </div>
       </div>
     </div>
     <div class="proof-footer">
