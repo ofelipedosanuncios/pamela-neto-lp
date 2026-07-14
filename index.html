@@ -193,7 +193,9 @@
 
   @media (max-width:960px){
     .hero .wrap{ grid-template-columns:1fr; gap:40px; }
-    .hero-visual{ order:-1; max-width:420px; margin:0 auto; }
+    /* headline, subheadline and CTA render before the photo on mobile,
+       matching the audit's "CTA antes da imagem" guidance */
+    .hero-visual{ max-width:420px; margin:0 auto; }
     .hero-badge{ left:14px; }
   }
 
@@ -381,6 +383,20 @@
 
   @media (max-width:960px){
     .section-pad{ padding:64px 0; }
+  }
+
+  /* Primary CTAs (hero, mid-page, final) go full-width and wrap their text on
+     narrow screens instead of forcing one line — the fixed nowrap width was
+     overflowing past rounded containers with overflow:hidden and getting
+     visually clipped at the edge. */
+  @media (max-width:520px){
+    .hero-cta-row .btn,
+    .mid-cta .btn,
+    .final-cta .btn{
+      white-space:normal;
+      width:100%;
+      text-align:center;
+    }
   }
 </style>
 </head>
