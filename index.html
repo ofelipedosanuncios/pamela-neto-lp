@@ -306,6 +306,7 @@
     display:flex; flex-direction:column; gap:14px;
     flex:1 1 300px; max-width:360px;
   }
+  .testimonial-card--compact{ align-self:flex-start; }
   .testimonial-stars{ display:flex; gap:3px; }
   .testimonial-stars svg{ width:15px; height:15px; fill:#E3A72F; }
   .testimonial-quote{ font-size:14.5px; color:var(--ink-soft); line-height:1.6; flex:1; }
@@ -652,17 +653,6 @@
     <div class="testimonial-grid">
       <div class="testimonial-card">
         <div class="testimonial-stars"><svg><use href="#ic-star"/></svg><svg><use href="#ic-star"/></svg><svg><use href="#ic-star"/></svg><svg><use href="#ic-star"/></svg><svg><use href="#ic-star"/></svg></div>
-        <p class="testimonial-quote">"Ótima profissional!"</p>
-        <div class="testimonial-author">
-          <span class="testimonial-avatar" style="background:#5B2A5C;">L</span>
-          <div>
-            <div class="testimonial-name">Luciana SaaD</div>
-            <div class="testimonial-source"><svg><use href="#ic-google"/></svg>Avaliação no Google</div>
-          </div>
-        </div>
-      </div>
-      <div class="testimonial-card">
-        <div class="testimonial-stars"><svg><use href="#ic-star"/></svg><svg><use href="#ic-star"/></svg><svg><use href="#ic-star"/></svg><svg><use href="#ic-star"/></svg><svg><use href="#ic-star"/></svg></div>
         <p class="testimonial-quote">"Profissional atenciosa e competente. Tem a experiência e as relações para prestar um serviço seguro e adequado para atingir o resultado desejado. No meu caso a questão foi uma revisão de volume em outorga de poço junto à SPAguas."</p>
         <div class="testimonial-author">
           <span class="testimonial-avatar" style="background:#2C4E3E;">R</span>
@@ -716,13 +706,24 @@
           </div>
         </div>
       </div>
-      <div class="testimonial-card">
+      <div class="testimonial-card testimonial-card--compact">
         <div class="testimonial-stars"><svg><use href="#ic-star"/></svg><svg><use href="#ic-star"/></svg><svg><use href="#ic-star"/></svg><svg><use href="#ic-star"/></svg><svg><use href="#ic-star"/></svg></div>
         <p class="testimonial-quote">"Profissional séria e eficiente."</p>
         <div class="testimonial-author">
           <span class="testimonial-avatar" style="background:#8B6BA0;">R</span>
           <div>
             <div class="testimonial-name">Rafaela Bianco</div>
+            <div class="testimonial-source"><svg><use href="#ic-google"/></svg>Avaliação no Google</div>
+          </div>
+        </div>
+      </div>
+      <div class="testimonial-card testimonial-card--compact">
+        <div class="testimonial-stars"><svg><use href="#ic-star"/></svg><svg><use href="#ic-star"/></svg><svg><use href="#ic-star"/></svg><svg><use href="#ic-star"/></svg><svg><use href="#ic-star"/></svg></div>
+        <p class="testimonial-quote">"Ótima profissional!"</p>
+        <div class="testimonial-author">
+          <span class="testimonial-avatar" style="background:#5B2A5C;">L</span>
+          <div>
+            <div class="testimonial-name">Luciana SaaD</div>
             <div class="testimonial-source"><svg><use href="#ic-google"/></svg>Avaliação no Google</div>
           </div>
         </div>
