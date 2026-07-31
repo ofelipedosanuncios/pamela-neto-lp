@@ -91,6 +91,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
     letter-spacing:-0.01em;
     margin:0;
     color:var(--purple-deep);
+    text-wrap:balance;
   }
   p{margin:0;}
   .wrap{max-width:var(--maxw); margin:0 auto; padding:0 32px;}
@@ -211,7 +212,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
   .section-pad{ padding:88px 0; }
   .section-head{ max-width:640px; margin-bottom:52px; }
   .section-head h2{ font-size:clamp(28px,3.2vw,40px); line-height:1.16; margin-top:16px; }
-  .section-head p{ margin-top:16px; font-size:17px; color:var(--ink-soft); line-height:1.65; }
+  .section-head p{ margin-top:16px; font-size:17px; color:var(--ink-soft); line-height:1.65; text-wrap:balance; }
   .divider-leaf{ display:flex; justify-content:center; padding:0; }
   .divider-leaf svg{ width:64px; height:auto; color:var(--lilac); opacity:0.7; }
 
@@ -266,7 +267,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
     box-shadow:0 10px 22px -10px rgba(91,42,92,0.6);
   }
   .process-step h3{ font-size:17px; font-family:'Archivo',sans-serif; font-weight:700; margin-bottom:8px; color:var(--purple-deep); }
-  .process-step p{ font-size:14.5px; color:var(--ink-soft); line-height:1.55; }
+  .process-step p{ font-size:15px; color:var(--ink-soft); line-height:1.55; }
   .process-note{ margin-top:40px; font-size:14px; color:var(--ink-soft); border-left:3px solid var(--sage-light); padding-left:16px; max-width:640px; }
   @media (max-width:860px){
     .process-row{ grid-template-columns:1fr 1fr; row-gap:36px; }
@@ -284,7 +285,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
   .authority-copy > p{ font-size:17px; color:var(--ink-soft); line-height:1.7; }
   .authority-cols{ margin-top:34px; display:grid; grid-template-columns:repeat(3,1fr); gap:26px; }
   .authority-col h4{ font-family:'Archivo',sans-serif; font-weight:700; font-size:15.5px; color:var(--purple-deep); margin-bottom:8px; }
-  .authority-col p{ font-size:14px; color:var(--ink-soft); line-height:1.55; }
+  .authority-col p{ font-size:14.5px; color:var(--ink-soft); line-height:1.55; }
   @media (max-width:900px){ .authority-grid{ grid-template-columns:1fr; } .authority-photo{ max-width:340px; margin:0 auto;} }
   @media (max-width:600px){ .authority-cols{ grid-template-columns:1fr; } }
 
@@ -301,7 +302,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
   .fieldwork-photo img{ width:100%; height:100%; object-fit:cover; display:block; transition:transform .5s ease; }
   .fieldwork-card:hover .fieldwork-photo img{ transform:scale(1.06); }
   .fieldwork-card p{
-    margin-top:12px; font-size:13.5px; line-height:1.4; color:var(--ink-soft); text-align:center;
+    margin-top:12px; font-size:14.5px; line-height:1.4; color:var(--ink-soft); text-align:center;
   }
   @media (max-width:960px){
     .fieldwork-grid{ grid-template-columns:repeat(5,minmax(150px,1fr)); overflow-x:auto; padding-bottom:8px; margin:44px -32px 0; padding-left:32px; padding-right:32px; scroll-snap-type:x mandatory; }
@@ -322,12 +323,12 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
     letter-spacing:0.12em; text-transform:uppercase; color:var(--ink-soft);
   }
   .clients-row{
-    margin-top:22px; display:flex; flex-wrap:wrap;
-    justify-content:center; align-items:center; gap:18px;
+    margin:22px auto 0; max-width:600px;
+    display:grid; grid-template-columns:repeat(3,1fr); gap:18px;
   }
   .client-logo{
     background:var(--white); border:1px solid var(--line); border-radius:var(--radius-sm);
-    width:172px; height:92px; display:flex; align-items:center; justify-content:center;
+    width:100%; height:92px; display:flex; align-items:center; justify-content:center;
     padding:16px 20px; box-sizing:border-box;
     transition:transform .3s ease, box-shadow .3s ease;
   }
@@ -335,7 +336,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
   .client-logo img{
     max-width:130px; max-height:60px; width:auto; height:auto; object-fit:contain;
   }
-  @media (max-width:560px){ .client-logo{ width:148px; height:80px; } }
+  @media (max-width:560px){ .clients-row{ grid-template-columns:repeat(2,1fr); max-width:340px; } .client-logo{ height:80px; } }
 
   /* ===== Complementary ===== */
   .complementary-box{
@@ -345,29 +346,43 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
   .complementary-box .icon-lg{ width:56px; height:56px; flex:none; color:var(--sage-deep); }
   @media (max-width:700px){ .complementary-box{ flex-direction:column; padding:32px; } }
 
-  /* ===== Social proof ===== */
-  .testimonial-grid{ display:flex; flex-wrap:wrap; justify-content:center; gap:22px; }
+  /* ===== Social proof (marquee) ===== */
+  .testimonial-marquee{
+    position:relative; left:50%; right:50%; margin-left:-50vw; margin-right:-50vw; width:100vw;
+    overflow:hidden;
+    -webkit-mask-image:linear-gradient(to right, transparent, #000 6%, #000 94%, transparent);
+    mask-image:linear-gradient(to right, transparent, #000 6%, #000 94%, transparent);
+  }
+  .testimonial-track{
+    display:flex; align-items:stretch; gap:22px; width:max-content;
+    padding-left:max(32px, calc((100vw - var(--maxw)) / 2 + 32px));
+    padding-right:max(32px, calc((100vw - var(--maxw)) / 2 + 32px));
+    animation:testimonial-scroll 52s linear infinite;
+  }
+  .testimonial-track.is-paused{ animation-play-state:paused; }
+  @keyframes testimonial-scroll{ from{ transform:translateX(0); } to{ transform:translateX(-50%); } }
+  @media (prefers-reduced-motion:reduce){ .testimonial-track{ animation:none; } }
   .testimonial-card{
     background:var(--white); border:1px solid var(--line);
     border-radius:var(--radius-md); padding:28px 26px;
     display:flex; flex-direction:column; gap:14px;
-    flex:1 1 300px; max-width:360px;
+    flex:0 0 320px; width:320px;
   }
-  .testimonial-card--compact{ align-self:flex-start; }
   .testimonial-stars{ display:flex; gap:3px; }
   .testimonial-stars svg{ width:15px; height:15px; fill:#E3A72F; }
-  .testimonial-quote{ font-size:14.5px; color:var(--ink-soft); line-height:1.6; flex:1; }
+  .testimonial-quote{ font-size:15.5px; color:var(--ink-soft); line-height:1.6; flex:1; }
   .testimonial-author{ display:flex; align-items:center; gap:12px; }
   .testimonial-avatar{
     width:38px; height:38px; border-radius:50%; flex:none;
     display:flex; align-items:center; justify-content:center;
     color:var(--white); font-family:'Fraunces',serif; font-weight:650; font-size:15.5px;
   }
-  .testimonial-name{ font-size:14px; font-weight:700; color:var(--purple-deep); }
-  .testimonial-source{ display:flex; align-items:center; gap:6px; margin-top:2px; font-size:12px; color:var(--ink-soft); }
+  .testimonial-name{ font-size:14.5px; font-weight:700; color:var(--purple-deep); }
+  .testimonial-source{ display:flex; align-items:center; gap:6px; margin-top:2px; font-size:12.5px; color:var(--ink-soft); }
   .testimonial-source svg{ width:13px; height:13px; flex:none; }
-  .proof-footer{ margin-top:28px; display:flex; align-items:center; gap:12px; font-size:14.5px; color:var(--ink-soft); }
+  .proof-footer{ margin-top:32px; display:flex; align-items:center; gap:12px; font-size:14.5px; color:var(--ink-soft); }
   .proof-footer a{ font-weight:700; color:var(--purple-deep); text-decoration:underline; text-underline-offset:3px; }
+  @media (max-width:560px){ .testimonial-card{ flex:0 0 260px; width:260px; padding:24px 20px; } }
 
   /* ===== FAQ ===== */
   .faq-list{ max-width:800px; }
@@ -725,7 +740,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       <div>
         <span class="eyebrow">Também pode fazer parte da regularização</span>
         <h2 style="font-size:24px; margin-top:14px;">Outras frentes que costumam surgir junto com o licenciamento</h2>
-        <p style="margin-top:14px; color:var(--ink-soft); font-size:15.5px; max-width:640px;">Gestão de resíduos sólidos, recursos hídricos, cadastros federais junto ao IBAMA, produtos químicos controlados e assessoria ambiental mensal, tratados dentro do mesmo diagnóstico inicial.</p>
+        <p style="margin-top:14px; color:var(--ink-soft); font-size:15.5px; max-width:640px; text-wrap:balance;">Gestão de resíduos sólidos, recursos hídricos, cadastros federais junto ao IBAMA, produtos químicos controlados e assessoria ambiental mensal, tratados dentro do mesmo diagnóstico inicial.</p>
       </div>
     </div>
   </div>
@@ -743,81 +758,162 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       <span class="eyebrow">O que as empresas dizem</span>
       <h2>Avaliações de quem já passou pelo processo</h2>
     </div>
-    <div class="testimonial-grid">
-      <div class="testimonial-card">
-        <div class="testimonial-stars"><svg><use href="#ic-star"/></svg><svg><use href="#ic-star"/></svg><svg><use href="#ic-star"/></svg><svg><use href="#ic-star"/></svg><svg><use href="#ic-star"/></svg></div>
-        <p class="testimonial-quote">"Profissional atenciosa e competente. Tem a experiência e as relações para prestar um serviço seguro e adequado para atingir o resultado desejado. No meu caso a questão foi uma revisão de volume em outorga de poço junto à SPAguas."</p>
-        <div class="testimonial-author">
-          <span class="testimonial-avatar" style="background:#2C4E3E;">R</span>
-          <div>
-            <div class="testimonial-name">Ricardo Lima</div>
-            <div class="testimonial-source"><svg><use href="#ic-google"/></svg>Avaliação no Google</div>
+    <div class="testimonial-marquee">
+      <div class="testimonial-track" id="testimonialTrack">
+        <div class="testimonial-card">
+          <div class="testimonial-stars"><svg><use href="#ic-star"/></svg><svg><use href="#ic-star"/></svg><svg><use href="#ic-star"/></svg><svg><use href="#ic-star"/></svg><svg><use href="#ic-star"/></svg></div>
+          <p class="testimonial-quote">"Profissional atenciosa e competente. Tem a experiência e as relações para prestar um serviço seguro e adequado para atingir o resultado desejado. No meu caso a questão foi uma revisão de volume em outorga de poço junto à SPAguas."</p>
+          <div class="testimonial-author">
+            <span class="testimonial-avatar" style="background:#2C4E3E;">R</span>
+            <div>
+              <div class="testimonial-name">Ricardo Lima</div>
+              <div class="testimonial-source"><svg><use href="#ic-google"/></svg>Avaliação no Google</div>
+            </div>
           </div>
         </div>
-      </div>
-      <div class="testimonial-card">
-        <div class="testimonial-stars"><svg><use href="#ic-star"/></svg><svg><use href="#ic-star"/></svg><svg><use href="#ic-star"/></svg><svg><use href="#ic-star"/></svg><svg><use href="#ic-star"/></svg></div>
-        <p class="testimonial-quote">"Contratamos os serviços de licenças ambientais com a Sra. Pamela, desde o início, a partir da proposta até a finalização dos serviços, tivemos acompanhamento no processo. Recomendo pela seriedade e profissionalismo."</p>
-        <div class="testimonial-author">
-          <span class="testimonial-avatar" style="background:#B8863B;">F</span>
-          <div>
-            <div class="testimonial-name">Fabio Larrubia</div>
-            <div class="testimonial-source"><svg><use href="#ic-google"/></svg>Avaliação no Google</div>
+        <div class="testimonial-card">
+          <div class="testimonial-stars"><svg><use href="#ic-star"/></svg><svg><use href="#ic-star"/></svg><svg><use href="#ic-star"/></svg><svg><use href="#ic-star"/></svg><svg><use href="#ic-star"/></svg></div>
+          <p class="testimonial-quote">"Contratamos os serviços de licenças ambientais com a Sra. Pamela, desde o início, a partir da proposta até a finalização dos serviços, tivemos acompanhamento no processo. Recomendo pela seriedade e profissionalismo."</p>
+          <div class="testimonial-author">
+            <span class="testimonial-avatar" style="background:#B8863B;">F</span>
+            <div>
+              <div class="testimonial-name">Fabio Larrubia</div>
+              <div class="testimonial-source"><svg><use href="#ic-google"/></svg>Avaliação no Google</div>
+            </div>
           </div>
         </div>
-      </div>
-      <div class="testimonial-card">
-        <div class="testimonial-stars"><svg><use href="#ic-star"/></svg><svg><use href="#ic-star"/></svg><svg><use href="#ic-star"/></svg><svg><use href="#ic-star"/></svg><svg><use href="#ic-star"/></svg></div>
-        <p class="testimonial-quote">"Pamela foi extremamente atenciosa, demonstrou muita competência e objetividade nas informações e orientações que precisávamos. Recomendo muito!!"</p>
-        <div class="testimonial-author">
-          <span class="testimonial-avatar" style="background:#3A1A3C;">D</span>
-          <div>
-            <div class="testimonial-name">Denise Hachul</div>
-            <div class="testimonial-source"><svg><use href="#ic-google"/></svg>Avaliação no Google</div>
+        <div class="testimonial-card">
+          <div class="testimonial-stars"><svg><use href="#ic-star"/></svg><svg><use href="#ic-star"/></svg><svg><use href="#ic-star"/></svg><svg><use href="#ic-star"/></svg><svg><use href="#ic-star"/></svg></div>
+          <p class="testimonial-quote">"Pamela foi extremamente atenciosa, demonstrou muita competência e objetividade nas informações e orientações que precisávamos. Recomendo muito!!"</p>
+          <div class="testimonial-author">
+            <span class="testimonial-avatar" style="background:#3A1A3C;">D</span>
+            <div>
+              <div class="testimonial-name">Denise Hachul</div>
+              <div class="testimonial-source"><svg><use href="#ic-google"/></svg>Avaliação no Google</div>
+            </div>
           </div>
         </div>
-      </div>
-      <div class="testimonial-card">
-        <div class="testimonial-stars"><svg><use href="#ic-star"/></svg><svg><use href="#ic-star"/></svg><svg><use href="#ic-star"/></svg><svg><use href="#ic-star"/></svg><svg><use href="#ic-star"/></svg></div>
-        <p class="testimonial-quote">"Foi uma experiência que superou as minhas expectativas. Seja pela eficiência, mas sobretudo, pelo acolhimento e sobretudo, pelo expertise demonstrado."</p>
-        <div class="testimonial-author">
-          <span class="testimonial-avatar" style="background:#3F6B56;">M</span>
-          <div>
-            <div class="testimonial-name">Marisilda Guerra</div>
-            <div class="testimonial-source"><svg><use href="#ic-google"/></svg>Avaliação no Google</div>
+        <div class="testimonial-card">
+          <div class="testimonial-stars"><svg><use href="#ic-star"/></svg><svg><use href="#ic-star"/></svg><svg><use href="#ic-star"/></svg><svg><use href="#ic-star"/></svg><svg><use href="#ic-star"/></svg></div>
+          <p class="testimonial-quote">"Foi uma experiência que superou as minhas expectativas. Seja pela eficiência, mas sobretudo, pelo acolhimento e sobretudo, pelo expertise demonstrado."</p>
+          <div class="testimonial-author">
+            <span class="testimonial-avatar" style="background:#3F6B56;">M</span>
+            <div>
+              <div class="testimonial-name">Marisilda Guerra</div>
+              <div class="testimonial-source"><svg><use href="#ic-google"/></svg>Avaliação no Google</div>
+            </div>
           </div>
         </div>
-      </div>
-      <div class="testimonial-card">
-        <div class="testimonial-stars"><svg><use href="#ic-star"/></svg><svg><use href="#ic-star"/></svg><svg><use href="#ic-star"/></svg><svg><use href="#ic-star"/></svg><svg><use href="#ic-star"/></svg></div>
-        <p class="testimonial-quote">"A Pamela sempre foi muito dedicada em tudo o que faz, com certeza uma excelente profissional, super atenciosa e inteligente! Recomendo muito!!!"</p>
-        <div class="testimonial-author">
-          <span class="testimonial-avatar" style="background:#A9645B;">J</span>
-          <div>
-            <div class="testimonial-name">Janaina Buzetto</div>
-            <div class="testimonial-source"><svg><use href="#ic-google"/></svg>Avaliação no Google</div>
+        <div class="testimonial-card">
+          <div class="testimonial-stars"><svg><use href="#ic-star"/></svg><svg><use href="#ic-star"/></svg><svg><use href="#ic-star"/></svg><svg><use href="#ic-star"/></svg><svg><use href="#ic-star"/></svg></div>
+          <p class="testimonial-quote">"A Pamela sempre foi muito dedicada em tudo o que faz, com certeza uma excelente profissional, super atenciosa e inteligente! Recomendo muito!!!"</p>
+          <div class="testimonial-author">
+            <span class="testimonial-avatar" style="background:#A9645B;">J</span>
+            <div>
+              <div class="testimonial-name">Janaina Buzetto</div>
+              <div class="testimonial-source"><svg><use href="#ic-google"/></svg>Avaliação no Google</div>
+            </div>
           </div>
         </div>
-      </div>
-      <div class="testimonial-card testimonial-card--compact">
-        <div class="testimonial-stars"><svg><use href="#ic-star"/></svg><svg><use href="#ic-star"/></svg><svg><use href="#ic-star"/></svg><svg><use href="#ic-star"/></svg><svg><use href="#ic-star"/></svg></div>
-        <p class="testimonial-quote">"Profissional séria e eficiente."</p>
-        <div class="testimonial-author">
-          <span class="testimonial-avatar" style="background:#8B6BA0;">R</span>
-          <div>
-            <div class="testimonial-name">Rafaela Bianco</div>
-            <div class="testimonial-source"><svg><use href="#ic-google"/></svg>Avaliação no Google</div>
+        <div class="testimonial-card">
+          <div class="testimonial-stars"><svg><use href="#ic-star"/></svg><svg><use href="#ic-star"/></svg><svg><use href="#ic-star"/></svg><svg><use href="#ic-star"/></svg><svg><use href="#ic-star"/></svg></div>
+          <p class="testimonial-quote">"Profissional séria e eficiente."</p>
+          <div class="testimonial-author">
+            <span class="testimonial-avatar" style="background:#8B6BA0;">R</span>
+            <div>
+              <div class="testimonial-name">Rafaela Bianco</div>
+              <div class="testimonial-source"><svg><use href="#ic-google"/></svg>Avaliação no Google</div>
+            </div>
           </div>
         </div>
-      </div>
-      <div class="testimonial-card testimonial-card--compact">
-        <div class="testimonial-stars"><svg><use href="#ic-star"/></svg><svg><use href="#ic-star"/></svg><svg><use href="#ic-star"/></svg><svg><use href="#ic-star"/></svg><svg><use href="#ic-star"/></svg></div>
-        <p class="testimonial-quote">"Ótima profissional!"</p>
-        <div class="testimonial-author">
-          <span class="testimonial-avatar" style="background:#5B2A5C;">L</span>
-          <div>
-            <div class="testimonial-name">Luciana SaaD</div>
-            <div class="testimonial-source"><svg><use href="#ic-google"/></svg>Avaliação no Google</div>
+        <div class="testimonial-card">
+          <div class="testimonial-stars"><svg><use href="#ic-star"/></svg><svg><use href="#ic-star"/></svg><svg><use href="#ic-star"/></svg><svg><use href="#ic-star"/></svg><svg><use href="#ic-star"/></svg></div>
+          <p class="testimonial-quote">"Ótima profissional!"</p>
+          <div class="testimonial-author">
+            <span class="testimonial-avatar" style="background:#5B2A5C;">L</span>
+            <div>
+              <div class="testimonial-name">Luciana SaaD</div>
+              <div class="testimonial-source"><svg><use href="#ic-google"/></svg>Avaliação no Google</div>
+            </div>
+          </div>
+        </div>
+        <div aria-hidden="true" style="display:contents">
+          <div class="testimonial-card">
+            <div class="testimonial-stars"><svg><use href="#ic-star"/></svg><svg><use href="#ic-star"/></svg><svg><use href="#ic-star"/></svg><svg><use href="#ic-star"/></svg><svg><use href="#ic-star"/></svg></div>
+            <p class="testimonial-quote">"Profissional atenciosa e competente. Tem a experiência e as relações para prestar um serviço seguro e adequado para atingir o resultado desejado. No meu caso a questão foi uma revisão de volume em outorga de poço junto à SPAguas."</p>
+            <div class="testimonial-author">
+              <span class="testimonial-avatar" style="background:#2C4E3E;">R</span>
+              <div>
+                <div class="testimonial-name">Ricardo Lima</div>
+                <div class="testimonial-source"><svg><use href="#ic-google"/></svg>Avaliação no Google</div>
+              </div>
+            </div>
+          </div>
+          <div class="testimonial-card">
+            <div class="testimonial-stars"><svg><use href="#ic-star"/></svg><svg><use href="#ic-star"/></svg><svg><use href="#ic-star"/></svg><svg><use href="#ic-star"/></svg><svg><use href="#ic-star"/></svg></div>
+            <p class="testimonial-quote">"Contratamos os serviços de licenças ambientais com a Sra. Pamela, desde o início, a partir da proposta até a finalização dos serviços, tivemos acompanhamento no processo. Recomendo pela seriedade e profissionalismo."</p>
+            <div class="testimonial-author">
+              <span class="testimonial-avatar" style="background:#B8863B;">F</span>
+              <div>
+                <div class="testimonial-name">Fabio Larrubia</div>
+                <div class="testimonial-source"><svg><use href="#ic-google"/></svg>Avaliação no Google</div>
+              </div>
+            </div>
+          </div>
+          <div class="testimonial-card">
+            <div class="testimonial-stars"><svg><use href="#ic-star"/></svg><svg><use href="#ic-star"/></svg><svg><use href="#ic-star"/></svg><svg><use href="#ic-star"/></svg><svg><use href="#ic-star"/></svg></div>
+            <p class="testimonial-quote">"Pamela foi extremamente atenciosa, demonstrou muita competência e objetividade nas informações e orientações que precisávamos. Recomendo muito!!"</p>
+            <div class="testimonial-author">
+              <span class="testimonial-avatar" style="background:#3A1A3C;">D</span>
+              <div>
+                <div class="testimonial-name">Denise Hachul</div>
+                <div class="testimonial-source"><svg><use href="#ic-google"/></svg>Avaliação no Google</div>
+              </div>
+            </div>
+          </div>
+          <div class="testimonial-card">
+            <div class="testimonial-stars"><svg><use href="#ic-star"/></svg><svg><use href="#ic-star"/></svg><svg><use href="#ic-star"/></svg><svg><use href="#ic-star"/></svg><svg><use href="#ic-star"/></svg></div>
+            <p class="testimonial-quote">"Foi uma experiência que superou as minhas expectativas. Seja pela eficiência, mas sobretudo, pelo acolhimento e sobretudo, pelo expertise demonstrado."</p>
+            <div class="testimonial-author">
+              <span class="testimonial-avatar" style="background:#3F6B56;">M</span>
+              <div>
+                <div class="testimonial-name">Marisilda Guerra</div>
+                <div class="testimonial-source"><svg><use href="#ic-google"/></svg>Avaliação no Google</div>
+              </div>
+            </div>
+          </div>
+          <div class="testimonial-card">
+            <div class="testimonial-stars"><svg><use href="#ic-star"/></svg><svg><use href="#ic-star"/></svg><svg><use href="#ic-star"/></svg><svg><use href="#ic-star"/></svg><svg><use href="#ic-star"/></svg></div>
+            <p class="testimonial-quote">"A Pamela sempre foi muito dedicada em tudo o que faz, com certeza uma excelente profissional, super atenciosa e inteligente! Recomendo muito!!!"</p>
+            <div class="testimonial-author">
+              <span class="testimonial-avatar" style="background:#A9645B;">J</span>
+              <div>
+                <div class="testimonial-name">Janaina Buzetto</div>
+                <div class="testimonial-source"><svg><use href="#ic-google"/></svg>Avaliação no Google</div>
+              </div>
+            </div>
+          </div>
+          <div class="testimonial-card">
+            <div class="testimonial-stars"><svg><use href="#ic-star"/></svg><svg><use href="#ic-star"/></svg><svg><use href="#ic-star"/></svg><svg><use href="#ic-star"/></svg><svg><use href="#ic-star"/></svg></div>
+            <p class="testimonial-quote">"Profissional séria e eficiente."</p>
+            <div class="testimonial-author">
+              <span class="testimonial-avatar" style="background:#8B6BA0;">R</span>
+              <div>
+                <div class="testimonial-name">Rafaela Bianco</div>
+                <div class="testimonial-source"><svg><use href="#ic-google"/></svg>Avaliação no Google</div>
+              </div>
+            </div>
+          </div>
+          <div class="testimonial-card">
+            <div class="testimonial-stars"><svg><use href="#ic-star"/></svg><svg><use href="#ic-star"/></svg><svg><use href="#ic-star"/></svg><svg><use href="#ic-star"/></svg><svg><use href="#ic-star"/></svg></div>
+            <p class="testimonial-quote">"Ótima profissional!"</p>
+            <div class="testimonial-author">
+              <span class="testimonial-avatar" style="background:#5B2A5C;">L</span>
+              <div>
+                <div class="testimonial-name">Luciana SaaD</div>
+                <div class="testimonial-source"><svg><use href="#ic-google"/></svg>Avaliação no Google</div>
+              </div>
+            </div>
           </div>
         </div>
       </div>
@@ -933,6 +1029,12 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         window.dataLayer.push({ event: "whatsapp_click" });
       });
     });
+
+    var track = document.getElementById("testimonialTrack");
+    if (track) {
+      track.addEventListener("pointerenter", function(){ track.classList.add("is-paused"); });
+      track.addEventListener("pointerleave", function(){ track.classList.remove("is-paused"); });
+    }
   })();
 </script>
 
